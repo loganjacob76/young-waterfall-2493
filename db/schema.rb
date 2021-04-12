@@ -18,8 +18,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_153027) do
   create_table "actors", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.string "currently_working"
-    t.string "boolean"
+    t.boolean "currently_working"
   end
 
   create_table "movie_actors", force: :cascade do |t|

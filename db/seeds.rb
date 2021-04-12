@@ -17,6 +17,10 @@ movie1 = studio1.movies.create!(title: 'Raiders of the Lost Ark', creation_year:
 movie2 = studio2.movies.create!(title: 'A New Hope', creation_year: 1977, genre: 'Sci-fi')
 
 actor1 = Actor.create!(name: 'Harrison Ford', age: 78, currently_working: false)
+actor2 = Actor.create!(name: 'John Rhys-Davies', age: 76, currently_working: false)
+actor3 = Actor.create!(name: 'James Earl Jones', age: 90, currently_working: true)
 
 MovieActor.create!(movie: movie1, actor: actor1)
+MovieActor.create!(movie: movie1, actor: actor2)
 MovieActor.create!(movie: movie2, actor: actor1)
+MovieActor.create!(movie: movie2, actor: actor3)

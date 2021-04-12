@@ -6,6 +6,7 @@ RSpec.describe 'movies show page' do
         @movie1 = studio1.movies.create!(title: 'Raiders of the Lost Ark', creation_year: 1981, genre: 'Action/Adventure')
         @actor1 = Actor.create!(name: 'Harrison Ford', age: 78, currently_working: false)
         @actor2 = Actor.create!(name: 'John Rhys-Davies', age: 76, currently_working: false)
+        @actor3 = Actor.create!(name: 'Karen Allen', age: 69, currently_working: false)
         
         MovieActor.create!(movie: @movie1, actor: @actor1)
         MovieActor.create!(movie: @movie1, actor: @actor2)
@@ -22,9 +23,19 @@ RSpec.describe 'movies show page' do
 
         it 'has all actors in the movie' do
             visit "/movies/#{@movie1.id}"
-
+            
             expect(page).to have_content(@actor1.name)
             expect(page).to have_content(@actor2.name)
+        end
+        
+        it 'can search for and add existing actors' do
+            visit "/movies/#{@movie1.id}"
+            
+            fill_in :name, with: 'Karen Allen'
+            click_button 'Submit'
+
+            expect(current_path).to eq("/movies/#{@movie1.id}")
+            expect(page).to have_content(@actor3.name)
         end
     end
 end

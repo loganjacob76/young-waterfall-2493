@@ -8,7 +8,7 @@ RSpec.describe 'shelters show page' do
 
     describe 'when I visit a studio show page' do
         it 'has the studio name, location, and all movies' do
-            visit "/studios/#{@studio.id}"
+            visit "/studios/#{@studio1.id}"
 
             expect(page).to have_content(@studio1.name)
             expect(page).to have_content(@studio1.location)
